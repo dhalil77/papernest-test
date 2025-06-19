@@ -1,0 +1,22 @@
+services:
+  backend:
+    build:
+      context: ./backend/test_papernest
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./backend/test_papernest:/app 
+    ports:
+      - 8000:8000
+
+  frontend:
+    build:
+      context: ./frontend/coverage-app
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend/coverage-app:/app  
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+

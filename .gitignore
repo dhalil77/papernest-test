@@ -1,0 +1,52 @@
+# Ignore all .env files
+**/.env*
+
+## Front
+# dependencies
+**/node_modules
+
+# testing
+**/coverage
+
+# production
+**/build
+
+# misc
+**/.DS_Store*
+**/npm-debug.log
+
+# ide
+**/.idea
+**/.vscode
+**/.venv
+# build
+**/dist
+
+## Back
+# Django generated files
+**/*.pyc
+**/*.pyo
+**/__pycache__/
+
+# Django migration files
+**/web_api/migrations/
+**/api/migrations/
+
+# Database
+**/db.sqlite3
+
+# Static files
+**/staticfiles/
+
+# Media files
+**/media/
+
+# misc
+**/.DS_Store
+
+# Logs
+**/log_file.*
+
+# ia file 
+**/iafile/
+
