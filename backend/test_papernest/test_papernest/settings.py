@@ -8,9 +8,6 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env.dev')) 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -43,7 +40,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'api.middleware.coverageMiddleware.async_coverage_middleware'
+    # 'api.middleware.coverageMiddleware.async_coverage_middleware'
 ]
 
 
@@ -156,14 +153,12 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
 
-# Configuration spécifique à votre app Coverage
+# Configuration  Coverage
 COVERAGE_CSV_PATH = os.path.join(BASE_DIR, 'api/data', 'data_coverage.csv')
-MAX_CONCURRENT_REQUESTS = int(os.getenv('MAX_CONCURRENT_REQUESTS', '10'))
-REQUEST_TIMEOUT = int(os.getenv('REQUEST_TIMEOUT', '10'))
+
 
 # Configuration des portées technologiques
 TECHNOLOGY_RANGES = { "2G": 30,  "3G": 5,  "4G": 10 }
-
 
 # Logging
 LOGGING = {

@@ -59,9 +59,8 @@ class CoverageAPIView(APIView):
         tags=['Coverage']
     )
     def post(self, request):
-        """Traite les demandes de couverture"""
+
         try:
-            # Validation des données
             data = request.data
             if not isinstance(data, dict) or not data:
                 return Response(
@@ -80,7 +79,6 @@ class CoverageAPIView(APIView):
             for addr_id, address in data.items():
                 try:
                     # Validation adresse
-
                     if not isinstance(address, str) or not address.strip():
                         result[addr_id] = {"error": "Adresse invalide"}
                         continue
@@ -97,14 +95,12 @@ class CoverageAPIView(APIView):
                     coverage = calculate_coverage(lon, lat, antennas)
                     result[addr_id] = coverage
                     
-                    logger.info(f"✅ {addr_id} traité avec succès")
+                    logger.info(f"{addr_id} traité avec succès")
                     
                 except Exception as e:
                     logger.error(f"Erreur traitement {addr_id}: {e}")
                     result[addr_id] = {"error": f"Erreur: {str(e)}"}
-            
             return Response(result)
-            
         except Exception as e:
             logger.error(f"Erreur critique: {e}")
             return Response(
