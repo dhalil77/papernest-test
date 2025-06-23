@@ -1,5 +1,5 @@
 # Ignore all .env files
-**/.env*
+# **/.env*
 
 ## Front
 # dependencies
